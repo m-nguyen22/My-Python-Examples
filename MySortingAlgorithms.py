@@ -1,5 +1,5 @@
 # Author: Minh Nguyen
-# This module contains two sorting algorithms, implemented in Python.
+# This module contains two sorting algorithms methods, implemented in Python.
 
 def Swap(ls: list, i1: int, i2: int):
 	temp = ls[i1]
@@ -8,7 +8,7 @@ def Swap(ls: list, i1: int, i2: int):
 	return ls
 
 def Heapify(ls: list, end):
-	j = len(ls) // 2
+	j = end // 2
 	for i in range(end, j - 1, -1):
 		k = i
 		while k != 0:
@@ -37,6 +37,13 @@ def MyHeapSort(ls: list, k = None):
 	return ls
 
 def MyMergeSort(ls: list, i = None, j = None):
+	'''
+	This mergesort takes a list and sorts it using recursive calls to mergesort.
+	It takes three parameters:
+	ls (the list being sorted)
+	i (the first element to start the sort. This will default to 0, the first element if not specified.)
+	j (the last element to end the sort. This will default to the end of the list if not specified.)
+	'''
 	if not isinstance(ls, list):
 		raise TypeError('Input param was not a list.')
 	if len(ls) == 0:
@@ -67,14 +74,12 @@ def MyMergeSort(ls: list, i = None, j = None):
 			except:
 				if isinstance(l, int):
 					ls.append(l)
-					left = [x for x in left]
-					if len(left) > 0:
-						ls.extend(left)
+					left = list(left)
+					ls.extend(left)
 				else:
 					ls.append(r)
-					right = [x for x in right]
-					if len(right) > 0:
-						ls.extend(right)
+					right = list(right)
+					ls.extend(right)
 				break
 		return ls
 	else:

@@ -26,9 +26,6 @@ class NQueens:
 	> ---Q
 	> -Q--
 	'''
-	solutions = []
-	col = []
-	n = 0
 
 	def __init__(self, n: int):
 		if n < 4:
@@ -62,12 +59,16 @@ class NQueens:
 	def __str__(self):
 		string = ""
 		for num, sol in enumerate(self.solutions, start = 1):
+			
 			string = string + ("Solution {}\n".format(num))
-			it = iter(sol)
-			next(it)
-			for i in it:
-				s = "".join(["-" * (i - 1), "Q", "-" * (self.n - i), "\n"])
-				string = "".join([string, s])
+			sol = ["".join(["-" * (x - 1), "Q", "-" * (self.n - x), "\n"]) for x in sol]
+			string = "".join([string, "".join(sol[1:]), "\n"])
+
+			# it = iter(sol)
+			# next(it)
+			# for i in it:
+			# 	s = "".join(["-" * (i - 1), "Q", "-" * (self.n - i), "\n"])
+			# 	string = "".join([string, s])
 		return string
 
 def testnqueens(n: int):

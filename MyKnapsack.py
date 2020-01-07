@@ -26,10 +26,6 @@ class Knapsack:
 	> 2 (weight = 4, value = 5)
 	> 1 (weight = 4, value = 11)
 	'''
-	w = []
-	k = 0
-	items = []
-	solution = 0
 
 	def __init__(self, w: list, k: int):
 		for i in w:
@@ -37,6 +33,8 @@ class Knapsack:
 				raise ValueError("w contains an invalid element. Elements must be integers greater than 0")
 		self.w = sorted(w, key = (lambda x: x[0]))
 		self.k = k
+		self.items = []
+		self.solution = 0
 		self.solve()
 
 	def solve(self):
